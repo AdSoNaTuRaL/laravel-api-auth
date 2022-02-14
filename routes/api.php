@@ -15,4 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('comments', CommentController::class);
+Route::resource('comments', CommentController::class)->only([
+    'index', 'show'
+]);
+
+Route::resource('comments', CommentController::class)->only([
+    'store', 'update', 'destroy'
+])->middleware(['auth0.authorize']);
